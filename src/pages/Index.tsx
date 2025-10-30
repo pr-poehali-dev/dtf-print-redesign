@@ -10,10 +10,10 @@ import { useToast } from '@/hooks/use-toast';
 export default function Index() {
   const { toast } = useToast();
   const [calcValues, setCalcValues] = useState({
-    width: 30,
-    height: 40,
+    width: 10,
+    height: 10,
     quantity: 1,
-    colors: 'full'
+    stitches: 5000
   });
 
   const [formData, setFormData] = useState({
@@ -23,12 +23,12 @@ export default function Index() {
   });
 
   const calculatePrice = () => {
-    const basePrice = 150;
-    const sizeMultiplier = (calcValues.width * calcValues.height) / 1200;
-    const colorMultiplier = calcValues.colors === 'full' ? 1.5 : 1;
-    const quantityDiscount = calcValues.quantity >= 10 ? 0.8 : calcValues.quantity >= 5 ? 0.9 : 1;
+    const stitchPrice = 0.05;
+    const setupFee = 500;
+    const quantityDiscount = calcValues.quantity >= 100 ? 0.7 : calcValues.quantity >= 50 ? 0.8 : calcValues.quantity >= 10 ? 0.9 : 1;
     
-    return Math.round(basePrice * sizeMultiplier * colorMultiplier * quantityDiscount * calcValues.quantity);
+    const pricePerItem = (calcValues.stitches * stitchPrice) * quantityDiscount;
+    return Math.round(setupFee + (pricePerItem * calcValues.quantity));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,42 +43,42 @@ export default function Index() {
   const services = [
     {
       icon: 'Shirt',
-      title: 'Футболки',
-      description: 'Яркая печать на любых футболках',
+      title: 'Корпоративная одежда',
+      description: 'Вышивка логотипов на униформе',
+      price: 'от 200₽'
+    },
+    {
+      icon: 'Award',
+      title: 'Шевроны и нашивки',
+      description: 'Изготовление шеврон под заказ',
+      price: 'от 150₽'
+    },
+    {
+      icon: 'Gift',
+      title: 'Подарки',
+      description: 'Именная вышивка на подарках',
       price: 'от 300₽'
     },
     {
-      icon: 'ShoppingBag',
-      title: 'Сумки',
-      description: 'Стильные принты на шопперах',
-      price: 'от 400₽'
-    },
-    {
-      icon: 'ShieldCheck',
-      title: 'Худи',
-      description: 'Качественные изображения',
+      icon: 'Palette',
+      title: 'Дизайн макета',
+      description: 'Оцифровка любого изображения',
       price: 'от 500₽'
-    },
-    {
-      icon: 'Sparkles',
-      title: 'Дизайн',
-      description: 'Уникальные макеты',
-      price: 'от 1000₽'
     }
   ];
 
   const gallery = [
     {
-      url: 'https://cdn.poehali.dev/projects/5641f4b0-081c-430e-baa8-c735874f10dc/files/13c53638-217b-4f69-a73d-3aa2fb4d6521.jpg',
-      title: 'Яркий принт на футболке'
+      url: 'https://cdn.poehali.dev/projects/5641f4b0-081c-430e-baa8-c735874f10dc/files/d52caf22-5cea-4316-ba07-ee68110f0699.jpg',
+      title: 'Вышивка логотипа на одежде'
     },
     {
-      url: 'https://cdn.poehali.dev/projects/5641f4b0-081c-430e-baa8-c735874f10dc/files/6390c017-8c83-4c06-965b-4a0ce09547d0.jpg',
-      title: 'Процесс DTF-печати'
+      url: 'https://cdn.poehali.dev/projects/5641f4b0-081c-430e-baa8-c735874f10dc/files/91161135-115f-49b5-a985-8faea9f4fdb5.jpg',
+      title: 'Профессиональное оборудование'
     },
     {
-      url: 'https://cdn.poehali.dev/projects/5641f4b0-081c-430e-baa8-c735874f10dc/files/c3e76af2-0fa8-4613-9a38-95c5b0bf5e0c.jpg',
-      title: 'Примеры готовых работ'
+      url: 'https://cdn.poehali.dev/projects/5641f4b0-081c-430e-baa8-c735874f10dc/files/ea24a2a3-00f4-435b-96ec-e091f8bfa7ab.jpg',
+      title: 'Примеры работ'
     }
   ];
 
@@ -86,7 +86,7 @@ export default function Index() {
     <div className="min-h-screen bg-white">
       <nav className="border-b bg-white sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-black tracking-tight">DTF PRINT</h1>
+          <h1 className="text-2xl font-black tracking-tight">ВЫШИВКА</h1>
           <div className="flex gap-6 items-center">
             <a href="#services" className="text-sm hover:text-primary transition-colors">Услуги</a>
             <a href="#gallery" className="text-sm hover:text-primary transition-colors">Работы</a>
@@ -101,13 +101,13 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block mb-6 px-4 py-1 border border-foreground/20 text-xs tracking-widest">
-                DIRECT TO FILM
+                МАШИННАЯ ВЫШИВКА
               </div>
               <h1 className="text-6xl md:text-7xl font-black mb-6 tracking-tight leading-none">
-                Чистая<br/>печать
+                Точная<br/>вышивка
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-md">
-                Технология переноса изображения на текстиль с непревзойденным качеством и долговечностью
+                Профессиональная машинная вышивка логотипов и дизайнов на любых тканях
               </p>
               <div className="flex gap-4">
                 <Button size="lg" className="rounded-none">
@@ -121,7 +121,7 @@ export default function Index() {
             <div className="relative h-[600px]">
               <img 
                 src={gallery[0].url}
-                alt="DTF печать" 
+                alt="Машинная вышивка" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
@@ -158,29 +158,29 @@ export default function Index() {
             <div className="relative h-[500px] order-2 lg:order-1">
               <img 
                 src={gallery[1].url}
-                alt="Процесс DTF" 
+                alt="Процесс вышивки" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-5xl font-black mb-8 tracking-tight">Технология</h2>
+              <h2 className="text-5xl font-black mb-8 tracking-tight">Процесс</h2>
               <div className="space-y-6">
                 <div className="border-l-2 border-foreground pl-6">
                   <div className="text-sm text-muted-foreground mb-2">ШАГ 01</div>
-                  <h4 className="font-bold mb-2 text-lg">Печать на пленке</h4>
-                  <p className="text-muted-foreground">Изображение печатается на специальной DTF-пленке с высоким разрешением</p>
+                  <h4 className="font-bold mb-2 text-lg">Оцифровка дизайна</h4>
+                  <p className="text-muted-foreground">Преобразование изображения в формат для вышивальной машины</p>
                 </div>
 
                 <div className="border-l-2 border-foreground pl-6">
                   <div className="text-sm text-muted-foreground mb-2">ШАГ 02</div>
-                  <h4 className="font-bold mb-2 text-lg">Клеевой слой</h4>
-                  <p className="text-muted-foreground">Нанесение специального порошкового клея для надежной фиксации</p>
+                  <h4 className="font-bold mb-2 text-lg">Подбор ниток</h4>
+                  <p className="text-muted-foreground">Выбор качественных ниток нужных цветов для вашего дизайна</p>
                 </div>
 
                 <div className="border-l-2 border-foreground pl-6">
                   <div className="text-sm text-muted-foreground mb-2">ШАГ 03</div>
-                  <h4 className="font-bold mb-2 text-lg">Термоперенос</h4>
-                  <p className="text-muted-foreground">Пленка переносится на изделие под температурой и давлением</p>
+                  <h4 className="font-bold mb-2 text-lg">Вышивка</h4>
+                  <p className="text-muted-foreground">Точная машинная вышивка на профессиональном оборудовании</p>
                 </div>
               </div>
             </div>
@@ -236,27 +236,40 @@ export default function Index() {
             <CardContent className="pt-8">
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <Label htmlFor="width" className="text-sm mb-2 block">Ширина (см)</Label>
+                  <Label htmlFor="width" className="text-sm mb-2 block">Размер вышивки (см)</Label>
                   <Input 
                     id="width"
                     type="number" 
                     value={calcValues.width}
                     onChange={(e) => setCalcValues({...calcValues, width: Number(e.target.value)})}
                     className="rounded-none"
+                    placeholder="Ширина"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="height" className="text-sm mb-2 block">Высота (см)</Label>
+                  <Label htmlFor="height" className="text-sm mb-2 block">&nbsp;</Label>
                   <Input 
                     id="height"
                     type="number" 
                     value={calcValues.height}
                     onChange={(e) => setCalcValues({...calcValues, height: Number(e.target.value)})}
                     className="rounded-none"
+                    placeholder="Высота"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="quantity" className="text-sm mb-2 block">Количество</Label>
+                  <Label htmlFor="stitches" className="text-sm mb-2 block">Количество стежков</Label>
+                  <Input 
+                    id="stitches"
+                    type="number" 
+                    value={calcValues.stitches}
+                    onChange={(e) => setCalcValues({...calcValues, stitches: Number(e.target.value)})}
+                    className="rounded-none"
+                  />
+                  <p className="text-xs text-muted-foreground mt-2">Примерно 5000-10000 стежков на дизайн</p>
+                </div>
+                <div>
+                  <Label htmlFor="quantity" className="text-sm mb-2 block">Тираж</Label>
                   <Input 
                     id="quantity"
                     type="number" 
@@ -264,26 +277,14 @@ export default function Index() {
                     onChange={(e) => setCalcValues({...calcValues, quantity: Number(e.target.value)})}
                     className="rounded-none"
                   />
-                  <p className="text-xs text-muted-foreground mt-2">От 5 шт — скидка 10%, от 10 шт — 20%</p>
-                </div>
-                <div>
-                  <Label htmlFor="colors" className="text-sm mb-2 block">Тип печати</Label>
-                  <select 
-                    id="colors"
-                    value={calcValues.colors}
-                    onChange={(e) => setCalcValues({...calcValues, colors: e.target.value})}
-                    className="w-full flex h-10 border border-input bg-background px-3 py-2 text-sm"
-                  >
-                    <option value="full">Полноцветная</option>
-                    <option value="mono">Монохромная</option>
-                  </select>
+                  <p className="text-xs text-muted-foreground mt-2">От 10 шт — скидка 10%, от 50 шт — 20%</p>
                 </div>
               </div>
 
               <div className="bg-foreground text-background p-8 text-center">
                 <p className="text-sm mb-2 opacity-70">Примерная стоимость</p>
                 <p className="text-5xl font-black mb-4">{calculatePrice()} ₽</p>
-                <p className="text-xs opacity-70">Точная стоимость после согласования макета</p>
+                <p className="text-xs opacity-70">Включая оцифровку макета. Точная стоимость после согласования</p>
               </div>
             </CardContent>
           </Card>
@@ -356,7 +357,7 @@ export default function Index() {
 
       <footer className="border-t py-8 px-4 bg-white">
         <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">© 2024 DTF PRINT</p>
+          <p className="text-sm text-muted-foreground">© 2024 ВЫШИВКА</p>
         </div>
       </footer>
     </div>
