@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
@@ -44,26 +43,26 @@ export default function Index() {
   const services = [
     {
       icon: 'Shirt',
-      title: 'Печать на футболках',
-      description: 'Яркая и долговечная печать на любых футболках',
+      title: 'Футболки',
+      description: 'Яркая печать на любых футболках',
       price: 'от 300₽'
     },
     {
       icon: 'ShoppingBag',
-      title: 'Печать на сумках',
-      description: 'Стильные принты на эко-сумках и шопперах',
+      title: 'Сумки',
+      description: 'Стильные принты на шопперах',
       price: 'от 400₽'
     },
     {
       icon: 'ShieldCheck',
-      title: 'Печать на худи',
-      description: 'Качественные изображения на толстовках',
+      title: 'Худи',
+      description: 'Качественные изображения',
       price: 'от 500₽'
     },
     {
       icon: 'Sparkles',
-      title: 'Индивидуальный дизайн',
-      description: 'Создание уникальных макетов под ваши задачи',
+      title: 'Дизайн',
+      description: 'Уникальные макеты',
       price: 'от 1000₽'
     }
   ];
@@ -83,176 +82,124 @@ export default function Index() {
     }
   ];
 
-  const advantages = [
-    { icon: 'Zap', title: 'Высокое качество', text: 'Яркие насыщенные цвета' },
-    { icon: 'Shield', title: 'Долговечность', text: 'Не выцветает после стирки' },
-    { icon: 'Palette', title: 'Любые цвета', text: 'Полноцветная печать' },
-    { icon: 'Clock', title: 'Быстро', text: 'Изготовление за 1-3 дня' }
-  ];
-
   return (
-    <div className="min-h-screen">
-      <section className="relative bg-gradient-to-br from-primary via-secondary to-accent text-white py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto relative z-10 animate-fade-in">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
-              DTF-печать нового поколения
-            </Badge>
-            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
-              Яркая печать<br />на любых тканях
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
-              Технология Direct to Film — это качественная и долговечная печать
-              с яркими насыщенными цветами на любых видах текстиля
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-                <Icon name="Calculator" className="mr-2" />
-                Рассчитать стоимость
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 text-lg px-8 py-6">
-                <Icon name="Phone" className="mr-2" />
-                Связаться с нами
-              </Button>
-            </div>
+    <div className="min-h-screen bg-white">
+      <nav className="border-b bg-white sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <h1 className="text-2xl font-black tracking-tight">DTF PRINT</h1>
+          <div className="flex gap-6 items-center">
+            <a href="#services" className="text-sm hover:text-primary transition-colors">Услуги</a>
+            <a href="#gallery" className="text-sm hover:text-primary transition-colors">Работы</a>
+            <a href="#calculator" className="text-sm hover:text-primary transition-colors">Калькулятор</a>
+            <Button size="sm" className="rounded-none">Связаться</Button>
           </div>
         </div>
-      </section>
+      </nav>
 
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-6">
-            {advantages.map((adv, idx) => (
-              <Card key={idx} className="text-center hover:shadow-lg transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <CardContent className="pt-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={adv.icon} size={32} className="text-white" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">{adv.title}</h3>
-                  <p className="text-muted-foreground">{adv.text}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-4" id="technology">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Что такое DTF-печать?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Direct to Film — современная технология переноса изображения на текстиль
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <Card className="border-l-4 border-primary">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xl font-bold text-primary">1</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-2">Печать на пленке</h4>
-                      <p className="text-sm text-muted-foreground">Изображение печатается на специальной DTF-пленке с высоким разрешением</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-l-4 border-secondary">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xl font-bold text-secondary">2</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-2">Нанесение клеевого слоя</h4>
-                      <p className="text-sm text-muted-foreground">На пленку наносится специальный порошковый клей для надежной фиксации</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-l-4 border-accent">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xl font-bold text-accent">3</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-2">Термоперенос на ткань</h4>
-                      <p className="text-sm text-muted-foreground">Пленка переносится на изделие под температурой и давлением термопресса</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-block mb-6 px-4 py-1 border border-foreground/20 text-xs tracking-widest">
+                DIRECT TO FILM
+              </div>
+              <h1 className="text-6xl md:text-7xl font-black mb-6 tracking-tight leading-none">
+                Чистая<br/>печать
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-md">
+                Технология переноса изображения на текстиль с непревзойденным качеством и долговечностью
+              </p>
+              <div className="flex gap-4">
+                <Button size="lg" className="rounded-none">
+                  Рассчитать стоимость
+                </Button>
+                <Button size="lg" variant="outline" className="rounded-none">
+                  Портфолио
+                </Button>
+              </div>
             </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
+            <div className="relative h-[600px]">
               <img 
-                src={gallery[1].url}
-                alt="DTF процесс" 
-                className="relative rounded-2xl shadow-2xl w-full h-full object-cover"
+                src={gallery[0].url}
+                alt="DTF печать" 
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gradient-to-br from-muted/50 to-primary/5" id="services">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">Наши услуги</h2>
-            <p className="text-lg text-muted-foreground">Печатаем на любых видах текстиля</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, idx) => (
-              <Card key={idx} className="group hover:shadow-2xl transition-all hover:-translate-y-2 cursor-pointer border-2 hover:border-primary">
-                <CardHeader>
-                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Icon name={service.icon} size={28} className="text-white" />
-                  </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription className="text-base">{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0">
-                    {service.price}
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
+      <section className="py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="text-4xl font-black mb-2">300+</div>
+              <div className="text-sm text-muted-foreground">Выполненных заказов</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black mb-2">1-3</div>
+              <div className="text-sm text-muted-foreground">Дня изготовление</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black mb-2">100%</div>
+              <div className="text-sm text-muted-foreground">Качество печати</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black mb-2">∞</div>
+              <div className="text-sm text-muted-foreground">Вариантов дизайна</div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-4" id="gallery">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Галерея работ
-            </h2>
-            <p className="text-lg text-muted-foreground">Примеры наших DTF-принтов</p>
+      <section className="py-24 px-4" id="technology">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative h-[500px] order-2 lg:order-1">
+              <img 
+                src={gallery[1].url}
+                alt="Процесс DTF" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-5xl font-black mb-8 tracking-tight">Технология</h2>
+              <div className="space-y-6">
+                <div className="border-l-2 border-foreground pl-6">
+                  <div className="text-sm text-muted-foreground mb-2">ШАГ 01</div>
+                  <h4 className="font-bold mb-2 text-lg">Печать на пленке</h4>
+                  <p className="text-muted-foreground">Изображение печатается на специальной DTF-пленке с высоким разрешением</p>
+                </div>
+
+                <div className="border-l-2 border-foreground pl-6">
+                  <div className="text-sm text-muted-foreground mb-2">ШАГ 02</div>
+                  <h4 className="font-bold mb-2 text-lg">Клеевой слой</h4>
+                  <p className="text-muted-foreground">Нанесение специального порошкового клея для надежной фиксации</p>
+                </div>
+
+                <div className="border-l-2 border-foreground pl-6">
+                  <div className="text-sm text-muted-foreground mb-2">ШАГ 03</div>
+                  <h4 className="font-bold mb-2 text-lg">Термоперенос</h4>
+                  <p className="text-muted-foreground">Пленка переносится на изделие под температурой и давлением</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-4 bg-muted/30" id="services">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-5xl font-black mb-16 tracking-tight">Услуги</h2>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            {gallery.map((item, idx) => (
-              <div key={idx} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer">
-                <img 
-                  src={item.url} 
-                  alt={item.title}
-                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <h3 className="text-white font-bold text-xl">{item.title}</h3>
+          <div className="grid md:grid-cols-4 gap-8">
+            {services.map((service, idx) => (
+              <div key={idx} className="group cursor-pointer">
+                <div className="bg-white border border-border p-8 mb-4 transition-all hover:border-foreground">
+                  <Icon name={service.icon} size={32} className="mb-4" />
+                  <h3 className="font-bold text-xl mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
+                  <div className="text-lg font-bold">{service.price}</div>
                 </div>
               </div>
             ))}
@@ -260,54 +207,72 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-muted/30" id="calculator">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">Калькулятор стоимости</h2>
-            <p className="text-lg text-muted-foreground">Рассчитайте примерную стоимость вашего заказа</p>
+      <section className="py-24 px-4" id="gallery">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-5xl font-black mb-16 tracking-tight">Работы</h2>
+          
+          <div className="grid md:grid-cols-3 gap-4">
+            {gallery.map((item, idx) => (
+              <div key={idx} className="relative aspect-[3/4] overflow-hidden group cursor-pointer">
+                <img 
+                  src={item.url} 
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end p-6">
+                  <h3 className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity">{item.title}</h3>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <Card className="border-2 shadow-xl">
-            <CardContent className="pt-6">
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+      <section className="py-24 px-4 bg-muted/30" id="calculator">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-5xl font-black mb-16 tracking-tight text-center">Калькулятор</h2>
+
+          <Card className="border-2 rounded-none">
+            <CardContent className="pt-8">
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <Label htmlFor="width" className="text-base">Ширина принта (см)</Label>
+                  <Label htmlFor="width" className="text-sm mb-2 block">Ширина (см)</Label>
                   <Input 
                     id="width"
                     type="number" 
                     value={calcValues.width}
                     onChange={(e) => setCalcValues({...calcValues, width: Number(e.target.value)})}
-                    className="mt-2"
+                    className="rounded-none"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="height" className="text-base">Высота принта (см)</Label>
+                  <Label htmlFor="height" className="text-sm mb-2 block">Высота (см)</Label>
                   <Input 
                     id="height"
                     type="number" 
                     value={calcValues.height}
                     onChange={(e) => setCalcValues({...calcValues, height: Number(e.target.value)})}
-                    className="mt-2"
+                    className="rounded-none"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="quantity" className="text-base">Количество (шт)</Label>
+                  <Label htmlFor="quantity" className="text-sm mb-2 block">Количество</Label>
                   <Input 
                     id="quantity"
                     type="number" 
                     value={calcValues.quantity}
                     onChange={(e) => setCalcValues({...calcValues, quantity: Number(e.target.value)})}
-                    className="mt-2"
+                    className="rounded-none"
                   />
-                  <p className="text-xs text-muted-foreground mt-1">От 5 шт — скидка 10%, от 10 шт — 20%</p>
+                  <p className="text-xs text-muted-foreground mt-2">От 5 шт — скидка 10%, от 10 шт — 20%</p>
                 </div>
                 <div>
-                  <Label htmlFor="colors" className="text-base">Тип печати</Label>
+                  <Label htmlFor="colors" className="text-sm mb-2 block">Тип печати</Label>
                   <select 
                     id="colors"
                     value={calcValues.colors}
                     onChange={(e) => setCalcValues({...calcValues, colors: e.target.value})}
-                    className="w-full mt-2 flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    className="w-full flex h-10 border border-input bg-background px-3 py-2 text-sm"
                   >
                     <option value="full">Полноцветная</option>
                     <option value="mono">Монохромная</option>
@@ -315,90 +280,83 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-white text-center">
-                <p className="text-lg mb-2 opacity-90">Примерная стоимость заказа</p>
+              <div className="bg-foreground text-background p-8 text-center">
+                <p className="text-sm mb-2 opacity-70">Примерная стоимость</p>
                 <p className="text-5xl font-black mb-4">{calculatePrice()} ₽</p>
-                <p className="text-sm opacity-75">Точная стоимость рассчитывается после согласования макета</p>
+                <p className="text-xs opacity-70">Точная стоимость после согласования макета</p>
               </div>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gradient-to-br from-primary via-secondary to-accent text-white" id="contact">
+      <section className="py-24 px-4 bg-foreground text-background" id="contact">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">Оставить заявку</h2>
-            <p className="text-xl text-white/90">Свяжемся с вами в течение 15 минут</p>
-          </div>
+          <h2 className="text-5xl font-black mb-16 tracking-tight text-center">Контакты</h2>
 
-          <Card className="border-0 shadow-2xl">
-            <CardContent className="pt-6">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name" className="text-base">Ваше имя</Label>
+                  <Label htmlFor="name" className="text-sm mb-2 block text-background">Имя</Label>
                   <Input 
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     required
-                    className="mt-2"
+                    className="rounded-none bg-background/10 border-background/20 text-background placeholder:text-background/50"
                     placeholder="Иван Иванов"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="text-base">Телефон</Label>
+                  <Label htmlFor="phone" className="text-sm mb-2 block text-background">Телефон</Label>
                   <Input 
                     id="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     required
-                    className="mt-2"
+                    className="rounded-none bg-background/10 border-background/20 text-background placeholder:text-background/50"
                     placeholder="+7 (999) 123-45-67"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="message" className="text-base">Комментарий к заказу</Label>
+                  <Label htmlFor="message" className="text-sm mb-2 block text-background">Сообщение</Label>
                   <Textarea 
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="mt-2 min-h-32"
-                    placeholder="Опишите, что хотите напечатать: размер, количество, детали макета..."
+                    className="rounded-none min-h-32 bg-background/10 border-background/20 text-background placeholder:text-background/50"
+                    placeholder="Детали заказа..."
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white text-lg py-6">
-                  <Icon name="Send" className="mr-2" />
-                  Отправить заявку
+                <Button type="submit" size="lg" className="w-full rounded-none bg-background text-foreground hover:bg-background/90">
+                  Отправить
                 </Button>
               </form>
-            </CardContent>
-          </Card>
+            </div>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white/10 backdrop-blur rounded-xl p-6">
-              <Icon name="Phone" size={32} className="mx-auto mb-3" />
-              <p className="font-bold mb-1">Телефон</p>
-              <p className="text-white/80">+7 (999) 123-45-67</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur rounded-xl p-6">
-              <Icon name="Mail" size={32} className="mx-auto mb-3" />
-              <p className="font-bold mb-1">Email</p>
-              <p className="text-white/80">info@dtf-print.ru</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur rounded-xl p-6">
-              <Icon name="MapPin" size={32} className="mx-auto mb-3" />
-              <p className="font-bold mb-1">Адрес</p>
-              <p className="text-white/80">Москва, ул. Примерная, 1</p>
+            <div className="space-y-8">
+              <div>
+                <div className="text-sm mb-2 opacity-70">ТЕЛЕФОН</div>
+                <div className="text-2xl font-bold">+7 (999) 123-45-67</div>
+              </div>
+              <div>
+                <div className="text-sm mb-2 opacity-70">EMAIL</div>
+                <div className="text-2xl font-bold">info@dtf-print.ru</div>
+              </div>
+              <div>
+                <div className="text-sm mb-2 opacity-70">АДРЕС</div>
+                <div className="text-2xl font-bold">Москва, ул. Примерная, 1</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-foreground text-background py-8 px-4">
+      <footer className="border-t py-8 px-4 bg-white">
         <div className="container mx-auto text-center">
-          <p className="text-sm opacity-80">© 2024 DTF-Print. Все права защищены.</p>
+          <p className="text-sm text-muted-foreground">© 2024 DTF PRINT</p>
         </div>
       </footer>
     </div>
